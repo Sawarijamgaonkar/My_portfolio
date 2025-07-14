@@ -31,7 +31,7 @@ const Projects: React.FC = () => {
       title: 'Accident Analytics Dashboard',
       category: 'Data Analytics',
       description: 'An extensive insight generated analytics dashboard that visualizes road patterns and causes like weather, and type of vehicles, drink drive,etc. Interlinked data from multiple sources to provide a comprehensive view of accident trends.',
-      image: 'https://github.com/Sawarijamgaonkar/My_portfolio/blob/main/sheet2.png',
+      image: 'sheet2.png',
       technologies: ['Qlik', 'Python', 'Excel'],
       features: ['Interactive Charts', 'High Accident zone predictions', 'Data Export', 'Responsive Design'],
       liveUrl: 'https://workdrive.zohoexternal.com/writer/open/00k0lca3bd303f7744c439a68d9940828288e?authId=%7B%22linkId%22%3A%225k2wApawdsO-LYmlU%22%7D',
