@@ -1,0 +1,19 @@
+<<<<<<<
+  const [messages, setMessages] = useState<Message[]>([
+    {
+      id: '1',
+      text: "Hi! I'm Sawari's AI assistant. I can help you learn more about her skills, projects, and experience. What would you like to know?",
+      sender: 'bot',
+      timestamp: new Date()
+    }
+  ]);
+=======
+  const [messages, setMessages] = useState<Message[]>([
+    {
+      id: '1',
+      text: "Hi! I'm Sawari's AI assistant. I can help you learn more about her skills, projects, and experience. What would you like to know?",
+      sender: 'bot',
+      timestamp: new Date()
+    }
+  ]);
+>>>>>>>
