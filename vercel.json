@@ -6,10 +6,10 @@
       "use": "@vercel/node"
     },
     {
-      "src": "frontend/package.json",
+      "src": "public/package.json",  // Adjust this if your static files are in a different folder
       "use": "@vercel/static-build",
       "config": {
-        "distDir": "frontend/dist"
+        "distDir": "public"  // Adjust this to the correct output directory
       }
     }
   ],
@@ -20,7 +20,12 @@
     },
     {
       "src": "/(.*)",
-      "dest": "/index.html"
+      "dest": "public/$1"  // Adjust this to point to your static files
+    },
+    {
+      "src": "/.*",
+      "status": 404,
+      "dest": "public/index.html"  // Fallback for client-side routing
     }
   ]
 }
