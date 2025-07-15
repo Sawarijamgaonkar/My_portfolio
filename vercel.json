@@ -6,7 +6,7 @@
       "use": "@vercel/node"
     },
     {
-      "src": "public/package.json",  // Adjust this if your static files are in a different folder
+      "src": "package.json",  // Adjust this if your static files are in a different folder
       "use": "@vercel/static-build",
       "config": {
         "distDir": "public"  // Adjust this to the correct output directory
