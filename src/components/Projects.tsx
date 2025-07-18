@@ -35,7 +35,7 @@ const Projects: React.FC = () => {
     },
     {
       title: 'Accident Analytics Dashboard',
-      category: 'Data-Analytics',
+      category: 'data-analytics',
       description: 'An extensive insight generated analytics dashboard that visualizes road patterns and causes like weather, and type of vehicles, drink drive,etc. Interlinked data from multiple sources to provide a comprehensive view of accident trends.',
       image: projImg6,
       technologies: ['Qlik', 'Python', 'Excel'],
