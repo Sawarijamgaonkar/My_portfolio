@@ -26,7 +26,7 @@ const Projects: React.FC = () => {
       title: 'Sync_Space: Collabrative work and time management platform',
       category: 'fullstack',
       description: 'A modern task management application with all types of compilers, real-time updates, and collaborative features. Built with html, css, js, and integrated with Firebase.',
-      image: projImg1,
+      image: 'https://github.com/Sawarijamgaonkar/My_portfolio/blob/main/sync_space_login.png',
       technologies: ['React', 'Firebase', 'Material-UI', 'TypeScript'],
       features: ['Make notes', 'Real-time Updates', 'Team Collaboration', 'Progress Tracking'],
       liveUrl: '#',
