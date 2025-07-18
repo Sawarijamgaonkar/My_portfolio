@@ -1,11 +1,6 @@
 import React, { useState } from 'react';
 import { ExternalLink, Github, Eye, Code, Zap, Users } from 'lucide-react';
-// import projImg1 from "../sync_space_login.png";
-// import projImg2 from "../portfolio.png";
-// import projImg3 from "../chatbot.png";
-// import projImg4 from "../mern.jpg";
-// import projImg5 from "../frontend_web.png";
-// import projImg6 from "../sheet2.png";
+
 
 const Projects: React.FC = () => {
   const [selectedCategory, setSelectedCategory] = useState('all');
