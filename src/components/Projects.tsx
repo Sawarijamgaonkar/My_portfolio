@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
 import { ExternalLink, Github, Eye, Code, Zap, Users } from 'lucide-react';
-import projImg1 from "../sync_space_login.png";
-import projImg2 from "../portfolio.png";
-import projImg3 from "../chatbot.png";
-import projImg4 from "../mern.jpg";
-import projImg5 from "../frontend_web.png";
-import projImg6 from "../sheet2.png";
+// import projImg1 from "../sync_space_login.png";
+// import projImg2 from "../portfolio.png";
+// import projImg3 from "../chatbot.png";
+// import projImg4 from "../mern.jpg";
+// import projImg5 from "../frontend_web.png";
+// import projImg6 from "../sheet2.png";
 
 const Projects: React.FC = () => {
   const [selectedCategory, setSelectedCategory] = useState('all');
@@ -15,7 +15,7 @@ const Projects: React.FC = () => {
       title: 'E-Commerce Platform  / One web page',
       category: 'frontend',
       description: 'A one page e-commerce platform built with HTML, CSS, JS, it is connected with google reviews API to view and write the platfrm reviews of the actual platform of Jamgaonkar Silk and sarees .',
-      image: projImg5,
+      image: 'https://github.com/Sawarijamgaonkar/My_portfolio/blob/main/frontend_web.png',
       technologies: ['HTML', 'CSS', 'JS', 'Git'],
       features: ['Home', 'About Us', 'Product', 'Reviews', 'Contact Us'],
       liveUrl: 'https://sawarijamgaonkar.github.io/Shop-Website/SHOP.html',
@@ -35,9 +35,9 @@ const Projects: React.FC = () => {
     },
     {
       title: 'Accident Analytics Dashboard',
-      category: 'data-analytics',
+      category: 'Data-Analytics',
       description: 'An extensive insight generated analytics dashboard that visualizes road patterns and causes like weather, and type of vehicles, drink drive,etc. Interlinked data from multiple sources to provide a comprehensive view of accident trends.',
-      image: projImg6,
+      image: 'https://github.com/Sawarijamgaonkar/My_portfolio/blob/main/sheet2.png',
       technologies: ['Qlik', 'Python', 'Excel'],
       features: ['Interactive Charts', 'High Accident zone predictions', 'Data Export', 'Responsive Design'],
       liveUrl: 'https://workdrive.zohoexternal.com/writer/open/00k0lca3bd303f7744c439a68d9940828288e?authId=%7B%22linkId%22%3A%225k2wApawdsO-LYmlU%22%7D',
@@ -48,7 +48,7 @@ const Projects: React.FC = () => {
       title: 'MERN X AI: Model Benchmarking Platform',
       category: 'fullstack',
       description: 'Fast API built using pyhton and basics like confusion matrix, accuracy, etc where in the platform takes input model files like pikle files, tensor files, etc and tell how good your model\'s performance is.',
-      image: projImg4,
+      image:'https://github.com/Sawarijamgaonkar/My_portfolio/blob/main/mern.jpg',
       technologies: ['Node.js', 'Express', 'MongoDB', 'Socket.io', 'JWT'],
       features: ['RESTful Architecture', 'Real-time Notifications', 'Authentication', 'Rate Limiting'],
       liveUrl: 'https://ml-analyzer.vercel.app/',
@@ -59,7 +59,7 @@ const Projects: React.FC = () => {
       title: 'Nexus AI Chatbot',
       category: 'fullstack',
       description: 'An intelligent chatbot platform that uses large language model to provide customer support. Built with Python, streamlit, and integrated with Gemini API.',
-      image: projImg3,
+      image: 'https://github.com/Sawarijamgaonkar/My_portfolio/blob/main/chatbot.png',
       technologies: ['Python', 'Streamlit', 'Gemini API',],
       features: ['Natural Language Processing', 'Context Awareness', 'Multi-language Support', 'Analytics Dashboard'],
       liveUrl: 'https://genaichatbot-5t4u8kepdk7abgmsvfbww3.streamlit.app/',
@@ -70,7 +70,7 @@ const Projects: React.FC = () => {
       title: 'Portfolio Website',
       category: 'fullstack',
       description: 'My own portfolio platform that allows users to check my resume and portfolio, view all my skills, projects and profiles.',
-      image: projImg2,
+      image: 'https://github.com/Sawarijamgaonkar/My_portfolio/blob/main/portfolio.png',
       technologies: ['Next.js', 'TypeScript', 'React', 'Tailwind CSS'],
       features: ['Home', 'About', 'Experience and Education', 'Projects', 'Contact'],
       liveUrl: '#',
@@ -83,7 +83,7 @@ const Projects: React.FC = () => {
     { id: 'all', label: 'All Projects', icon: <Code size={16} /> },
     { id: 'fullstack', label: 'Full Stack', icon: <Zap size={16} /> },
     { id: 'frontend', label: 'Frontend', icon: <Eye size={16} /> },
-    { id: 'data-analytics', label: 'Data-Analytics', icon: <Users size={16} /> }
+    { id: 'Data-Analytics', label: 'Data-Analytics', icon: <Users size={16} /> }
   ];
 
   const filteredProjects = selectedCategory === 'all' 
