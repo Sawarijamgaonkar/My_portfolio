@@ -99,7 +99,7 @@ const Contact: React.FC = () => {
     {
       icon: <MapPin size={24} />,
       title: 'Location',
-      value: 'Mharashtra, India',
+      value: 'Maharashtra, India',
       link: '#'
     }
   ];
