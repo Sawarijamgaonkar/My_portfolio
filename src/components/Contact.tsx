@@ -47,39 +47,44 @@ const Contact: React.FC = () => {
     });
   };
 
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    if (!validateForm()) {
-      return;
+  // src/components/Contact.tsx
+
+// Find your handleSubmit function (around line 60)
+const handleSubmit = async (e: React.FormEvent) => {
+  e.preventDefault();
+  if (!validateForm()) {
+    return;
+  }
+  setIsSubmitting(true);
+
+  // --- THIS IS THE FIX ---
+  // The API URL now comes from your environment variables
+  const apiUrl = import.meta.env.VITE_API_URL;
+
+  try {
+    // The fetch URL now correctly points to your Render backend
+    const response = await fetch(`${apiUrl}/api/contact`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(formData)
+    });
+
+    if (response.ok) {
+      console.log('Form submitted successfully!');
+      setIsSubmitted(true);
+      setFormData({ name: '', email: '', subject: '', message: '' });
+      setTimeout(() => setIsSubmitted(false), 5000);
+    } else {
+      console.error('Failed to submit form');
     }
-    setIsSubmitting(true);
-
-    // Use environment variable for the API URL
-    const apiUrl = import.meta.env.VITE_API_URL || 'http://localhost:3001';
-
-    try {
-      const response = await fetch(`${apiUrl}/api/contact`, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(formData)
-      });
-
-      if (response.ok) {
-        setIsSubmitted(true);
-        setFormData({ name: '', email: '', subject: '', message: '' }); // Reset form
-        setTimeout(() => setIsSubmitted(false), 5000); // Hide success message after 5s
-      } else {
-        // Handle server-side errors if needed
-        console.error('Failed to submit form');
-      }
-    } catch (error) {
-      console.error('Error submitting form:', error);
-    } finally {
-      setIsSubmitting(false);
-    }
-  };
+  } catch (error) {
+    console.error('Error submitting form:', error);
+  } finally {
+    setIsSubmitting(false);
+  }
+};
 
   const contactInfo = [
     {
