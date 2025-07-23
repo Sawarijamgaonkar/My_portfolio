@@ -47,44 +47,41 @@ const Contact: React.FC = () => {
     });
   };
 
-  // src/components/Contact.tsx
-
-// Find your handleSubmit function (around line 60)
-const handleSubmit = async (e: React.FormEvent) => {
-  e.preventDefault();
-  if (!validateForm()) {
-    return;
-  }
-  setIsSubmitting(true);
-
-  // --- THIS IS THE FIX ---
-  // The API URL now comes from your environment variables
-  const apiUrl = import.meta.env.VITE_API_URL;
-
-  try {
-    // The fetch URL now correctly points to your Render backend
-    const response = await fetch(`${apiUrl}/api/contact`, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify(formData)
-    });
-
-    if (response.ok) {
-      console.log('Form submitted successfully!');
-      setIsSubmitted(true);
-      setFormData({ name: '', email: '', subject: '', message: '' });
-      setTimeout(() => setIsSubmitted(false), 5000);
-    } else {
-      console.error('Failed to submit form');
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!validateForm()) {
+      return;
     }
-  } catch (error) {
-    console.error('Error submitting form:', error);
-  } finally {
-    setIsSubmitting(false);
-  }
-};
+    setIsSubmitting(true);
+
+    // Use the environment variable to get the correct Render URL
+    const apiUrl = import.meta.env.VITE_API_URL;
+
+    try {
+      // This now correctly sends data to your Render backend
+      const response = await fetch(`${apiUrl}/api/contact`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(formData)
+      });
+
+      if (response.ok) {
+        setIsSubmitted(true);
+        setFormData({ name: '', email: '', subject: '', message: '' });
+        setTimeout(() => setIsSubmitted(false), 5000);
+      } else {
+        console.error('Failed to submit form');
+        // Optionally, set an error message for the user
+      }
+    } catch (error) {
+      console.error('Error submitting form:', error);
+      // Optionally, set an error message for the user
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
 
   const contactInfo = [
     {
@@ -112,11 +109,13 @@ const handleSubmit = async (e: React.FormEvent) => {
       icon: <Github size={24} />,
       name: 'GitHub',
       url: 'https://github.com/Sawarijamgaonkar',
+      color: 'hover:text-gray-300'
     },
     {
       icon: <Linkedin size={24} />,
       name: 'LinkedIn',
       url: 'https://www.linkedin.com/in/sawari-jamgaonkar-293399250/',
+      color: 'hover:text-blue-400'
     },
   ];
 
@@ -156,7 +155,9 @@ const handleSubmit = async (e: React.FormEvent) => {
                     href={info.link}
                     className="flex items-center p-4 bg-lavender/50 backdrop-blur-sm rounded-xl border border-peach/50 hover:border-peach/50 transition-all duration-300 transform hover:-translate-y-1 hover:shadow-lg hover:shadow-peach/10"
                   >
-                    <div className="text-peach mr-4">{info.icon}</div>
+                    <div className="text-peach mr-4">
+                      {info.icon}
+                    </div>
                     <div>
                       <h4 className="text-purple font-medium">{info.title}</h4>
                       <p className="text-pink">{info.value}</p>
@@ -188,7 +189,6 @@ const handleSubmit = async (e: React.FormEvent) => {
             {/* Contact Form */}
             <div className="relative">
               <form onSubmit={handleSubmit} className="space-y-6">
-                 {/* Input fields remain the same... */}
                 <div className="grid md:grid-cols-2 gap-6">
                   <div>
                     <label htmlFor="name" className="block text-sm font-medium text-pink mb-2">
@@ -277,7 +277,7 @@ const handleSubmit = async (e: React.FormEvent) => {
                 </button>
               </form>
 
-              {/* Success Message Overlay */}
+              {/* Success Message */}
               {isSubmitted && (
                 <div className="absolute inset-0 bg-lavender/95 backdrop-blur-sm rounded-xl flex items-center justify-center">
                   <div className="text-center">
