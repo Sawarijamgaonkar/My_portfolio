@@ -102,6 +102,7 @@ const Hero: React.FC = () => {
             aria-label="Scroll to About section"
             className="absolute bottom-10 left-1/2 transform -translate-x-1/2 text-purple hover:text-peach transition-colors duration-300 animate-bounce"
           >
+            
             <ChevronDown size={32} />
           </button>
         </div>
