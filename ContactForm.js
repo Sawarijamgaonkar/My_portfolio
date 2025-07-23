@@ -1,46 +1,59 @@
 import React, { useState } from 'react';
-import fs from 'fs';
 
 const ContactForm = () => {
     const [name, setName] = useState('');
     const [email, setEmail] = useState('');
     const [message, setMessage] = useState('');
+    const [status, setStatus] = useState('');
 
-    const handleSubmit = (event) => {
+    const handleSubmit = async (event) => {
         event.preventDefault();
+        setStatus('Sending...');
         const formData = { name, email, message };
-        fs.readFile('D:\college\projects\portfolio_web\project-bolt-sb1-1pevmemh\project\contact-data.json', (err, data) => {
-            if (err) {
-                console.error(err);
+
+        // Correctly using the Vite environment variable
+        const apiUrl = import.meta.env.VITE_API_URL;
+
+        try {
+            // Making the POST request to your Render backend
+            const response = await fetch(`${apiUrl}/api/contact`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(formData),
+            });
+
+            if (response.ok) {
+                setStatus('Message sent successfully!');
+                setName('');
+                setEmail('');
+                setMessage('');
             } else {
-                const jsonData = JSON.parse(data);
-                jsonData.push(formData);
-                fs.writeFile('D:\college\projects\portfolio_web\project-bolt-sb1-1pevmemh\project\contact-data.json', JSON.stringify(jsonData), (err) => {
-                    if (err) {
-                        console.error(err);
-                    } else {
-                        console.log('Contact form data saved successfully');
-                    }
-                });
+                setStatus('Failed to send message. Please try again.');
             }
-        });
+        } catch (error) {
+            console.error('Error submitting form:', error);
+            setStatus('An error occurred. Please try again.');
+        }
     };
 
     return (
         <form onSubmit={handleSubmit}>
             <label>
                 Name:
-                <input type="text" value={name} onChange={(event) => setName(event.target.value)} />
+                <input type="text" value={name} onChange={(event) => setName(event.target.value)} required />
             </label>
             <label>
                 Email:
-                <input type="email" value={email} onChange={(event) => setEmail(event.target.value)} />
+                <input type="email" value={email} onChange={(event) => setEmail(event.target.value)} required />
             </label>
             <label>
                 Message:
-                <textarea value={message} onChange={(event) => setMessage(event.target.value)} />
+                <textarea value={message} onChange={(event) => setMessage(event.target.value)} required />
             </label>
             <button type="submit">Send</button>
+            {status && <p>{status}</p>}
         </form>
     );
 };
