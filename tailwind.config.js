@@ -9,7 +9,7 @@ export default {
       green: '#0F0E47',
       yellow: '#F6F7BD',
       peach: '#280850ff',
-      lavender: '#097687',
+      lavender: '#3c78d8',
       mint: '#4f4caeff',
       coral: '#FF6F61',
       sky: '#B0E0E6',
